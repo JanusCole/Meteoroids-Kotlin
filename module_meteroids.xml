@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_meteroids" default="compile.module.meteroids">
+  <dirname property="module.meteroids.basedir" file="${ant.file.module_meteroids}"/>
+  
+  <property name="module.jdk.home.meteroids" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.meteroids" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.meteroids" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.meteroids" value="-encoding UTF-8 -source 10 -target 10 ${compiler.args}"/>
+  
+  <property name="meteroids.output.dir" value="${module.meteroids.basedir}/out/production/Meteroids"/>
+  <property name="meteroids.testoutput.dir" value="${module.meteroids.basedir}/out/test/Meteroids"/>
+  
+  <path id="meteroids.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="meteroids.module.production.classpath">
+    <path refid="${module.jdk.classpath.meteroids}"/>
+    <path refid="library.kotlinjavaruntime.classpath"/>
+  </path>
+  
+  <path id="meteroids.runtime.production.module.classpath">
+    <pathelement location="${meteroids.output.dir}"/>
+    <path refid="library.kotlinjavaruntime.classpath"/>
+  </path>
+  
+  <path id="meteroids.module.classpath">
+    <path refid="${module.jdk.classpath.meteroids}"/>
+    <pathelement location="${meteroids.output.dir}"/>
+    <path refid="library.kotlinjavaruntime.classpath"/>
+  </path>
+  
+  <path id="meteroids.runtime.module.classpath">
+    <pathelement location="${meteroids.testoutput.dir}"/>
+    <pathelement location="${meteroids.output.dir}"/>
+    <path refid="library.kotlinjavaruntime.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.meteroids">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.meteroids">
+    <patternset refid="excluded.from.module.meteroids"/>
+  </patternset>
+  
+  <path id="meteroids.module.sourcepath">
+    <dirset dir="${module.meteroids.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.meteroids" depends="compile.module.meteroids.production,compile.module.meteroids.tests" description="Compile module Meteroids"/>
+  
+  <target name="compile.module.meteroids.production" depends="register.custom.compilers" description="Compile module Meteroids; production classes">
+    <mkdir dir="${meteroids.output.dir}"/>
+    <javac2 destdir="${meteroids.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.meteroids}/javac">
+      <compilerarg line="${compiler.args.meteroids}"/>
+      <bootclasspath refid="meteroids.module.bootclasspath"/>
+      <classpath refid="meteroids.module.production.classpath"/>
+      <src refid="meteroids.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.meteroids"/>
+    </javac2>
+    
+    <copy todir="${meteroids.output.dir}">
+      <fileset dir="${module.meteroids.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.meteroids.tests" depends="register.custom.compilers,compile.module.meteroids.production" description="compile module Meteroids; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.meteroids" description="cleanup module">
+    <delete dir="${meteroids.output.dir}"/>
+    <delete dir="${meteroids.testoutput.dir}"/>
+  </target>
+</project>
