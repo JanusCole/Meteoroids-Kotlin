@@ -18,7 +18,7 @@ class Meteor : GameObject () {
         location = GameObjectLocation(Random.nextInt(GameWidth, (GameWidth * 2)),
                                       Random.nextInt(5, GameHeight - 5))
         velocity = GameObjectVelocity(-1,0)
-        size = GameObjectSize(32,32)
+        size = GameObjectSize(15,15)
         try {
             gameObjectImage  = ImageIO.read(File("bigMeteor.png"))
         } catch (e: IOException) {

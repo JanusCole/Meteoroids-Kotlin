@@ -44,6 +44,7 @@ class Meteoroids : KeyListener {
             gamePanel.resetImages()
 
             gameActions.processInput(inputChar)
+            inputChar = ' '
             gameActions.updateGame(gamePanel)
 
             gamePanel.revalidate();
@@ -62,13 +63,9 @@ class Meteoroids : KeyListener {
     }
 
     override fun keyReleased(e: KeyEvent?) {
-        inputChar = 'q'
     }
 
     override fun keyTyped(e: KeyEvent?) {
-
-
-
     }
 
 }

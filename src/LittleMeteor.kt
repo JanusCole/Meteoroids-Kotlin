@@ -12,8 +12,8 @@ class LittleMeteor (val xStartLocation : Int, val yStartLocation : Int, val yVel
 
     init {
         location = GameObjectLocation(xStartLocation,yStartLocation)
-        velocity = GameObjectVelocity(-2,yVelocity)
-        size = GameObjectSize(12,12)
+        velocity = GameObjectVelocity(-3,yVelocity)
+        size = GameObjectSize(5,5)
         try {
             gameObjectImage  = ImageIO.read(File("littleMeteor.png"))
         } catch (e: IOException) {

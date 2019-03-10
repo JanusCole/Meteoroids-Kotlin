@@ -36,10 +36,10 @@ class GamePanel : JPanel {
 
     override fun paintComponent(g: Graphics?) {
         super.paintComponents(g)
-            g!!.drawImage(stars, 0,0, this)
-            gameImages.forEach {
-                g!!.drawImage(it.image, it.xLocation,it.yLocation, this)
-            }
+        g!!.drawImage(stars, 0,0, this)
+        gameImages.toList().forEach {
+            g!!.drawImage(it.image, it.xLocation,it.yLocation, this)
+        }
 
     }
 }

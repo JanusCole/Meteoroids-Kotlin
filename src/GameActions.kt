@@ -42,7 +42,7 @@ class GameActions () {
             'x' -> gameOver = true
             'n' -> player.moveUp()
             'm' -> player.moveDown()
-            'a' -> gameObjects.add(Laser(player.getXLocation() + 75, player.getYLocation() + 15, 1))
+            'a' -> gameObjects.add(Laser(player.getXLocation() + 75, player.getYLocation() + 15, 2))
         }
     }
 

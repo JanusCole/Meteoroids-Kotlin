@@ -50,9 +50,9 @@ class AlienShip : GameObject () {
         }
 
         if (Random.nextInt(1, 30000) == 5) {
-            newGameObjects.add(Laser(getXLocation() - 50, getYLocation(), -1))
-            newGameObjects.add(Laser(getXLocation() - 70, getYLocation(), -1))
-            newGameObjects.add(Laser(getXLocation() - 90, getYLocation(), -1))
+            newGameObjects.add(Laser(getXLocation() - 50, getYLocation(), -2))
+            newGameObjects.add(Laser(getXLocation() - 70, getYLocation(), -2))
+            newGameObjects.add(Laser(getXLocation() - 90, getYLocation(), -2))
         }
 
         return newGameObjects

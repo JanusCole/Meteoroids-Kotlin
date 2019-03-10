@@ -26,7 +26,8 @@ class Player : GameObject () {
     override fun updateLocation(window : GamePanel) {
         super.updateLocation(window)
 
-        velocity.yVelocity = 0
+        val direction = if (velocity.yVelocity > 0) -1 else 1
+        velocity.yVelocity = if (velocity.yVelocity != 0) velocity.yVelocity + direction else 0
 
         if (location.yLocation < 1) {
             location.yLocation = 1
@@ -38,11 +39,11 @@ class Player : GameObject () {
    }
 
     fun moveUp() {
-        velocity.yVelocity = -1
+        velocity.yVelocity = -5
     }
 
     fun moveDown() {
-        velocity.yVelocity = 1
+        velocity.yVelocity = 5
     }
 
     override fun checkForCollision (gameObject : GameObject) : MutableList <GameObject> {
