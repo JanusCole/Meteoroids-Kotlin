@@ -7,7 +7,7 @@ import javax.swing.JLabel
 import java.awt.Font
 import java.lang.Thread.sleep
 
-var inputChar : Char = 'q'
+var inputChar : Char = ' '
 
 public val GameHeight = 800
 val GameWidth = 1200
